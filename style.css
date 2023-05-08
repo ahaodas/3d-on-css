@@ -1,0 +1,122 @@
+.tron {
+  background-image: linear-gradient(to left, cyan 0, transparent 1%),
+    linear-gradient(to top, cyan 0, transparent 1%);
+  background-size: 5% 5%;
+  background-repeat: repeat;
+  box-shadow: 0 0 10px cyan;
+}
+body {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  overflow: hidden;
+  background: black;
+}
+.view {
+  position: relative;
+  margin: auto;
+  transform-style: preserve-3d;
+  transform-origin: center bottom;
+  transform: rotateX(90deg);
+}
+#world,
+.figure {
+  position: absolute;
+}
+#world {
+  height: 100vw;
+  width: 100vw;
+  transform-style: preserve-3d;
+}
+.wall {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+}
+.wall:nth-child(1) {
+  transform-origin: bottom center;
+  transform: rotateX(-90deg);
+}
+.wall:nth-child(2) {
+  transform-origin: top center;
+  transform: rotateX(90deg);
+}
+.wall:nth-child(3) {
+  transform-origin: left center;
+  transform: rotateY(-90deg);
+}
+.wall:nth-child(4) {
+  transform-origin: right center;
+  transform: rotateY(90deg);
+}
+.wall:nth-child(5) {
+  transform-origin: right center;
+  transform: translateZ(100%);
+}
+.figure {
+  background: rgba(255, 255, 255, 0.4);
+  outline: 1px solid white;
+  transform-style: preserve-3d;
+}
+.figure div {
+  background: inherit;
+  outline: inherit;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+.figure div:nth-child(1) {
+  transform-origin: bottom center;
+  transform: rotateX(-90deg);
+}
+.figure div:nth-child(2) {
+  transform-origin: top center;
+  transform: rotateX(90deg);
+}
+.figure div:nth-child(3) {
+  transform-origin: left center;
+  transform: rotateY(-90deg);
+}
+.figure div:nth-child(4) {
+  transform-origin: right center;
+  transform: rotateY(90deg);
+}
+.figure div:nth-child(5) {
+  transform-origin: right center;
+  transform: translateZ(100%);
+}
+#output {
+  position: absolute;
+  width: 12ch;
+  color: yellow;
+  padding: 0.4em 0.3em;
+  font-family: "Press Start 2P", cursive;
+}
+#output #x,
+#output #y,
+#output #z,
+#output #rz,
+#output #ry,
+#output #rx,
+#output #tm,
+#output #am {
+  max-width: 100%;
+  padding: 0.2em;
+  display: flex;
+  justify-content: space-between;
+}
+#output #x:after,
+#output #y:after,
+#output #z:after,
+#output #rz:after,
+#output #ry:after,
+#output #rx:after,
+#output #tm:after,
+#output #am:after {
+  content: attr(data-d);
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
